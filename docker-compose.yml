@@ -11,6 +11,18 @@ services:
         volumes:
             - './API_School:/var/www/html:cached'
 
+    vuejs:
+        image: vuejs-school 
+        container_name: vuejs
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - './vueJsSchool:/app:cached'
+
+        ports:
+            - '81:8080'
+
     nginx:
         image: 'nginx:1.21.6'
         container_name: my-nginx
@@ -35,7 +47,7 @@ services:
         image: phpmyadmin
         restart: always
         ports:
-            - 8080:80
+            - 8090:80
         links:
             - "database"  
         environment:
